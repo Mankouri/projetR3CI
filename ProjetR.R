@@ -47,16 +47,19 @@ svdPrediction <- predict(svdRecommender,getData(evaluationSchema,"known"),type="
 popPrediction <- predict(popularRecommender,getData(evaluationSchema,"known"),type="ratings")
 randPrediction <- predict(randomRecommender,getData(evaluationSchema,"known"),type="ratings")
 
-ubcfPredictionAccuracy <- calcPredictionAccuracy(ubcf_pred,getData(eSetup,"unknown"))
-ibcfPredictionAccuracy <- calcPredictionAccuracy(ibcf_pred,getData(eSetup,"unknown"))
-svdPredictionAccuracy <- calcPredictionAccuracy(svd_pred,getData(eSetup,"unknown"))
-popPredictionAccuracy <- calcPredictionAccuracy(pop_pred,getData(eSetup,"unknown"))
-randPredictionAccuracy <- calcPredictionAccuracy(rand_pred,getData(eSetup,"unknown"))
-PredictionAccuracy <- rbind(ubcf_error,ibcf_error,svd_error,pop_error,rand_error)
+ubcfPredictionAccuracy <- calcPredictionAccuracy(ubcfPrediction,getData(evaluationSchema,"unknown"))
+ibcfPredictionAccuracy <- calcPredictionAccuracy(ibcfPrediction,getData(evaluationSchema,"unknown"))
+svdPredictionAccuracy <- calcPredictionAccuracy(svdPrediction,getData(evaluationSchema,"unknown"))
+popPredictionAccuracy <- calcPredictionAccuracy(popPrediction,getData(evaluationSchema,"unknown"))
+randPredictionAccuracy <- calcPredictionAccuracy(randPrediction,getData(evaluationSchema,"unknown"))
+PredictionAccuracy <- rbind(ubcfPredictionAccuracy,ibcfPredictionAccuracy,svdPredictionAccuracy,popPredictionAccuracy,randPredictionAccuracy)
 
 rownames(PredictionAccuracy) <- c("UBCF","IBCF","SVD","POP","RAND")
 
+View(PredictionAccuracy)
 
+algorithms<-list(POPULAR=list(name="POPULAR"),SVD=list(name="SVD"),UBCF=list(name="UBCF"))
+evlist<-evaluate(eSetup,algorithms,n=c(5,10,15,20))
 
 
 #resultat <- Recommender(realAllMerged, method = "UBCF")
