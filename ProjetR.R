@@ -58,8 +58,11 @@ rownames(PredictionAccuracy) <- c("UBCF","IBCF","SVD","POP","RAND")
 
 View(PredictionAccuracy)
 
-algorithms<-list(POPULAR=list(name="POPULAR"),SVD=list(name="SVD"),UBCF=list(name="UBCF"))
-evlist<-evaluate(eSetup,algorithms,n=c(5,10,15,20))
+algorithms <- list(POPULAR=list(name="POPULAR"),SVD=list(name="SVD"),UBCF=list(name="UBCF"))
+evlist <- evaluate(eSetup,algorithms,n=c(5,10,15,20))
+avg(evlist)
+
+
 
 
 #resultat <- Recommender(realAllMerged, method = "UBCF")
