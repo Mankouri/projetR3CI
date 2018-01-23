@@ -59,6 +59,7 @@ rownames(PredictionAccuracy) <- c("UBCF","IBCF","SVD","POP","RAND")
 View(PredictionAccuracy)
 
 algorithms <- list(POPULAR=list(name="POPULAR"),SVD=list(name="SVD"),UBCF=list(name="UBCF"))
+<<<<<<< HEAD
 evaluatelist <- evaluate(evaluationSchema,algorithms,n=c(5,10,15,20))
 avg(evaluatelist)
 
@@ -66,6 +67,12 @@ plot(evaluatelist,legend="topleft", annotate=T)
 
 RecommenderOnE<-Recommender(mergeMovRat,method="POPULAR")
 RecommenderOnE
+=======
+evlist <- evaluate(eSetup,algorithms,n=c(5,10,15,20))
+avg(evlist)
+
+
+>>>>>>> 7cc0d90c97a9f53673f7b7a2109beec8af7fe689
 
 
 #resultat <- Recommender(realAllMerged, method = "UBCF")
