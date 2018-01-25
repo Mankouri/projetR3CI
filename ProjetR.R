@@ -67,6 +67,17 @@ plot(evaluatelist,legend="topleft", annotate=T)
 RecommenderOnE<-Recommender(mergeMovRat,method="POPULAR")
 RecommenderOnE
 
+predictRecommend<-predict(RecommenderOnE,mergeMovRat[1:5],n=5)
+as(predictRecommend,"list")
+
+
+predictRating <- predict(RecommenderOnE,mergeMovRat[1:5],type='ratings')
+predictRating
+
+RESULTAT <- as(predictRating,'matrix')[1:5,1:3]
+RESULTAT
+colnames(RESULTAT)<-c("Toy Story","Jumanji","Grumpier Old Men")
+RESULTAT
 
 #resultat <- Recommender(realAllMerged, method = "UBCF")
 #prediction <- predict(resultat,realAllMerged,, given = 3)
